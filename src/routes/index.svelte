@@ -1,5 +1,8 @@
 <script>
   import HlsPlayer from "../components/HlsPlayer.svelte";
+  import TivanService from "../services/tivan.js";
+
+  new TivanService().getCameras();
 </script>
 
 <svelte:head>
