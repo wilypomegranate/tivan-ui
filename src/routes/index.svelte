@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-  <title>Live View</title>
+  <title>Overview</title>
 </svelte:head>
 <h1>Welcome to Tivan!</h1>
 
