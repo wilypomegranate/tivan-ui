@@ -15,6 +15,6 @@ function build_url(remainder) {
 export default class TivanService {
     async getCameras() {
         const res = await fetch(build_url('/camera/'));
-        console.log(JSON.stringify(await res.json()));
+        return await res.json();
     }
 }
