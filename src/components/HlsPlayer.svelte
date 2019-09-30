@@ -5,6 +5,10 @@
 
   export let url;
 
+  let duration;
+  let time = 0;
+  let paused = false;
+
   onMount(() => {
     let video = document.getElementById("video");
     if (Hls.isSupported()) {
@@ -20,7 +24,19 @@
         video.play();
       });
     }
+
+    setTimeout(() => {
+      if (!isNaN(duration)) {
+        time = duration - 10;
+      }
+    }, 1000);
   });
 </script>
 
-<video id="video" controls autoplay="true" />
+<video
+  id="video"
+  controls
+  autoplay="true"
+  bind:duration
+  bind:currentTime={time}
+  bind:paused />
