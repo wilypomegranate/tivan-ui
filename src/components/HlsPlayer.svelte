@@ -23,4 +23,4 @@
   });
 </script>
 
-<video id="video" controls autoplay="false" />
+<video id="video" controls autoplay="true" />

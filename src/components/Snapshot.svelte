@@ -12,11 +12,12 @@
 
 <style>
   .card {
-    max-width: 240px;
+    max-width: 24rem !important;
   }
 </style>
 
-<div class="card" style="max-width:24rem">
+<!-- <div class="card" style="max-width:24rem"> -->
+<div class="card">
   <div class="card-image">
     <img id={imgId} src={snapshot} alt="Snapshot image" onLoad={reload()} />
   </div>
