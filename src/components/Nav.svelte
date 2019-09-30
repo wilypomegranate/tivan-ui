@@ -58,7 +58,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <div class="navbar-item">Home</div>
+      <a href="/" class="navbar-item">Home</a>
     </div>
 
     <div class="navbar-end">

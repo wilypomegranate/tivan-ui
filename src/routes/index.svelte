@@ -19,7 +19,8 @@
           <div class="column">
             <Snapshot
               snapshot={camera.snapshot_url}
-              description={camera.description} />
+              description={camera.description}
+              id={camera.id} />
           </div>
         {/each}
       {/await}

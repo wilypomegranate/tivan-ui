@@ -1,6 +1,7 @@
 <script>
   export let snapshot;
   export let description;
+  export let id;
   const imgId = Math.random();
 
   function reload() {
@@ -17,11 +18,11 @@
 </style>
 
 <!-- <div class="card" style="max-width:24rem"> -->
-<div class="card">
+<a class="card" href="/camera/live/{id}/">
   <div class="card-image">
     <img id={imgId} src={snapshot} alt="Snapshot image" onLoad={reload()} />
   </div>
   <div class="card-content">
     <p class="subtitle is-6">{description}</p>
   </div>
-</div>
+</a>
