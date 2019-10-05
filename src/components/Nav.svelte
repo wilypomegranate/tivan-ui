@@ -59,6 +59,7 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <a href="/" class="navbar-item">Home</a>
+      <a href="/history" class="navbar-item">History</a>
     </div>
 
     <div class="navbar-end">
