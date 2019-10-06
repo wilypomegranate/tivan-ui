@@ -74,7 +74,9 @@
       {#await events then events}
         {#each events.results as event}
           <div class="column">
-            <p>{event.start_time}</p>
+            {#each event.capture_pictures as cp}
+              <img src={cp.path} alt="Captured event snapshot" />
+            {/each}
           </div>
         {/each}
       {/await}
