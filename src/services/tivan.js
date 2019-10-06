@@ -22,4 +22,13 @@ export default class TivanService {
         const res = await fetch(build_url('/camera/', cameraId, '/'));
         return await res.json();
     }
+
+    async getEvents(start, stop) {
+        // let url = new URL('/event/');
+        // const params = { start_time: start, stop_time: stop };
+        // Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
+        const res = await fetch(build_url(`/event/?start_time=${start}&stop_time=${stop}`));
+        return await res.json();
+    }
+
 }

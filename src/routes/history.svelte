@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import dateFns from "date-fns";
+  import TivanService from "../services/tivan.js";
 
   // The default range now - 1 day.
   let endDt = new Date();
@@ -33,9 +34,10 @@
     endDt = parseDt(dt);
   }
 
+  let events = new TivanService().getEvents(fmtIso(startDt), fmtIso(endDt));
+
   onMount(function() {
     // Make Ajax request to event for date range.
-    console.log(fmtIso(startDt), fmtIso(endDt));
   });
 </script>
 
@@ -64,3 +66,19 @@
     </div>
   </div>
 </div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="columns">
+      {#await events then events}
+        {#each events.results as event}
+          <div class="column">
+            <p>{event.start_time}</p>
+          </div>
+        {/each}
+      {/await}
+
+    </div>
+  </div>
+</section>
