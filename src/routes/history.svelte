@@ -34,11 +34,41 @@
     endDt = parseDt(dt);
   }
 
-  let events = new TivanService().getEvents(fmtIso(startDt), fmtIso(endDt));
+  let events = new Promise(function() {
+    return [];
+  });
+  const tivanService = new TivanService();
+
+  let page = 1;
+  const pageSize = 10;
 
   onMount(function() {
+    eventSearch();
     // Make Ajax request to event for date range.
   });
+
+  function eventSearch() {
+    events = tivanService.getEvents(fmtIso(startDt), fmtIso(endDt), page);
+  }
+
+  function calculateTotalPages(count) {
+    return Math.ceil(count / pageSize);
+  }
+
+  function nextPage(count) {
+    const numPages = calculateTotalPages(count);
+    if (page < numPages) {
+      page++;
+      eventSearch();
+    }
+  }
+
+  function previousPage(count) {
+    if (page > 1) {
+      page--;
+      eventSearch();
+    }
+  }
 </script>
 
 <label class="label">Search Range Start</label>
@@ -66,21 +96,65 @@
     </div>
   </div>
 </div>
+<div class="control">
+  <button class="button is-success" on:click={eventSearch}>Search</button>
+</div>
 
 <section class="section">
   <div class="container">
 
-    <div class="columns">
-      {#await events then events}
+    {#await events then events}
+      <div class="columns">
         {#each events.results as event}
           <div class="column">
-            {#each event.capture_pictures as cp}
-              <img src={cp.path} alt="Captured event snapshot" />
-            {/each}
+            <a href={event.video}>
+              <img src={event.picture} alt="Captured event snapshot" />
+            </a>
           </div>
         {/each}
-      {/await}
+      </div>
 
-    </div>
+      <nav class="pagination" role="navigation" aria-label="pagination">
+        <div
+          class="pagination-previous"
+          on:click={() => previousPage(events.count)}>
+          Previous
+        </div>
+        <div class="pagination-next" on:click={() => nextPage(events.count)}>
+          Next page
+        </div>
+        <ul class="pagination-list">
+          <li>
+            {#if page === 1}
+              <div class="pagination-link is-current" aria-label="Goto page 1">
+                1
+              </div>
+            {:else}
+              <div
+                class="pagination-link"
+                aria-label="Goto page 1"
+                on:click={() => {
+                  page = 1;
+                  eventSearch();
+                }}>
+                1
+              </div>
+            {/if}
+          </li>
+          <li>
+            <span class="pagination-ellipsis">&hellip;</span>
+          </li>
+          <li>
+            <div
+              class="pagination-link"
+              aria-label="Goto page {calculateTotalPages(events.count)}">
+              {calculateTotalPages(events.count)}
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+    {/await}
+
   </div>
 </section>

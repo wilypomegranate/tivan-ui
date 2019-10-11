@@ -23,11 +23,11 @@ export default class TivanService {
         return await res.json();
     }
 
-    async getEvents(start, stop) {
+    async getEvents(start, stop, page = 1, page_size = 10) {
         // let url = new URL('/event/');
         // const params = { start_time: start, stop_time: stop };
         // Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
-        const res = await fetch(build_url(`/event/?start_time=${start}&stop_time=${stop}`));
+        const res = await fetch(build_url(`/event/?start_time=${start}&stop_time=${stop}&page=${page}&page_size=${page_size}`));
         return await res.json();
     }
 
