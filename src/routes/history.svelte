@@ -141,15 +141,36 @@
               </div>
             {/if}
           </li>
+          {#if page < calculateTotalPages(events.count) && page !== 1}
+            <li>
+              <div
+                class="pagination-link is-current"
+                aria-label="Goto page {page}">
+                {page}
+              </div>
+            </li>
+          {/if}
           <li>
             <span class="pagination-ellipsis">&hellip;</span>
           </li>
           <li>
-            <div
-              class="pagination-link"
-              aria-label="Goto page {calculateTotalPages(events.count)}">
-              {calculateTotalPages(events.count)}
-            </div>
+            {#if page === calculateTotalPages(events.count)}
+              <div
+                class="pagination-link is-current"
+                aria-label="Goto page {calculateTotalPages(events.count)}">
+                {calculateTotalPages(events.count)}
+              </div>
+            {:else}
+              <div
+                class="pagination-link"
+                aria-label="Goto page {calculateTotalPages(events.count)}"
+                on:click={() => {
+                  page = calculateTotalPages(events.count);
+                  eventSearch();
+                }}>
+                {calculateTotalPages(events.count)}
+              </div>
+            {/if}
           </li>
         </ul>
       </nav>
