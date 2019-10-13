@@ -36,12 +36,8 @@
 </nav> -->
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img
-        src="https://bulma.io/images/bulma-logo.png"
-        alt="brand"
-        width="112"
-        height="28" />
+    <a class="navbar-item" href="/">
+      <p>Tivan</p>
     </a>
 
     <div
@@ -58,14 +54,14 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a href="/" class="navbar-item">Home</a>
+      <a href="/" class="navbar-item">Live</a>
       <a href="/history" class="navbar-item">History</a>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <div class="button is-primary">Log in</div>
+          <!-- <div class="button is-primary">Log in</div> -->
         </div>
       </div>
     </div>
