@@ -50,6 +50,8 @@
 
   let camerasById = {};
 
+  let selectedEvents = {};
+
   const tivanService = new TivanService();
 
   let page = 1;
@@ -85,6 +87,10 @@
       page--;
       eventSearch();
     }
+  }
+
+  function selectEvent(id) {
+    selectedEvents[id] = true;
   }
 </script>
 
@@ -126,11 +132,20 @@
           <!-- <img src={event.picture} alt="Captured event snapshot" /> -->
           <div class="card">
             <div class="card-image">
-              <figure class="image is-16by9">
-                <a href={event.video} target="_blank">
-                  <img src={event.picture} alt={event.picture} />
-                </a>
-              </figure>
+              {#if !selectedEvents[event.id]}
+                <figure class="image is-16by9">
+                  <div
+                    on:click={() => {
+                      selectEvent(event.id);
+                    }}>
+                    <img src={event.picture} alt={event.picture} />
+                  </div>
+                </figure>
+              {:else}
+                <video controls autoplay>
+                  <source src={event.video} type="video/mp4" />
+                </video>
+              {/if}
             </div>
             <div class="card-content">
               <div class="content">
