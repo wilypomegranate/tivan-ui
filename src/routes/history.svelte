@@ -94,34 +94,38 @@
   }
 </script>
 
-<label class="label">Search Range Start</label>
-<div class="field">
-  <div class="field-body">
-    <div class="control">
-      <input
-        type="datetime-local"
-        class="input"
-        value={fmtIsoLocal(startDt)}
-        on:input={setStartDt} />
-    </div>
-  </div>
-</div>
+<section class="section">
 
-<label class="label">Search Range Stop</label>
-<div class="field">
-  <div class="field-body">
-    <div class="control">
-      <input
-        type="datetime-local"
-        class="input"
-        value={fmtIsoLocal(endDt)}
-        on:input={setEndDt} />
+  <label class="label">Search Range Start</label>
+  <div class="field">
+    <div class="field-body">
+      <div class="control">
+        <input
+          type="datetime-local"
+          class="input"
+          value={fmtIsoLocal(startDt)}
+          on:input={setStartDt} />
+      </div>
     </div>
   </div>
-</div>
-<div class="control">
-  <button class="button is-success" on:click={eventSearch}>Search</button>
-</div>
+
+  <label class="label">Search Range Stop</label>
+  <div class="field">
+    <div class="field-body">
+      <div class="control">
+        <input
+          type="datetime-local"
+          class="input"
+          value={fmtIsoLocal(endDt)}
+          on:input={setEndDt} />
+      </div>
+    </div>
+  </div>
+  <div class="control">
+    <button class="button is-success" on:click={eventSearch}>Search</button>
+  </div>
+
+</section>
 
 <section class="section">
 
