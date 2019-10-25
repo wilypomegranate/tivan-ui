@@ -27,8 +27,8 @@
 </style>
 
 <!-- <d class="card" style="max-width:24rem"> -->
-<a class="card" href="/camera/live/{id}/">
-  <!-- <a class="card"> -->
+<!-- <a class="card" href="/camera/live/{id}/"> -->
+<div class="card" on:click={select}>
   <div class="card-image">
     {#if !selected}
       <img id={imgId} src={snapshot} alt="Snapshot image" onLoad={reload()} />
@@ -39,4 +39,4 @@
   <div class="card-content">
     <p class="subtitle is-6">{description}</p>
   </div>
-</a>
+</div>

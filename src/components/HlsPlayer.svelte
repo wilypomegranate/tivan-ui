@@ -9,8 +9,14 @@
   let time = 0;
   let paused = false;
 
+  function randomId() {
+    return btoa(Math.random()).substring(0, 12);
+  }
+
+  let id = randomId();
+
   onMount(() => {
-    let video = document.getElementById("video");
+    let video = document.getElementById(id);
     if (Hls.isSupported()) {
       let hls = new Hls();
       hls.loadSource(url);
@@ -34,7 +40,7 @@
 </script>
 
 <video
-  id="video"
+  {id}
   controls
   autoplay="true"
   bind:duration
