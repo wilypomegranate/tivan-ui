@@ -13,14 +13,15 @@
 <section class="section">
   <div class="container">
 
-    <div class="columns">
+    <div class="columns is-multiline">
       {#await cameras then cameras}
         {#each cameras as camera}
-          <div class="column">
+          <div class="column is-3-desktop is-4-tablet">
             <Snapshot
               snapshot={camera.snapshot_url}
               description={camera.description}
-              id={camera.id} />
+              id={camera.id}
+              streamUrl={camera.stream_url} />
           </div>
         {/each}
       {/await}

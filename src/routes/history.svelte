@@ -130,9 +130,9 @@
 <section class="section">
 
   {#await events then events}
-    <div class="columns">
+    <div class="columns is-multiline">
       {#each events.results as event}
-        <div class="column is-quarter">
+        <div class="column is-3-desktop is-4-tablet">
           <!-- <img src={event.picture} alt="Captured event snapshot" /> -->
           <div class="card">
             <div class="card-image">
